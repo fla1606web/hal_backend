@@ -57,7 +57,7 @@ app.include_router(UserRouter, tags=["User"], prefix="/user")
 app.include_router(EntityRouter, tags=["Entity"], prefix="/entity")
 app.include_router(EntityFieldRouter,
                    tags=["EntityField"], prefix="/entityField")
-app.include_router(DataRouter, tags=["Data"], prefix="")
+app.include_router(DataRouter, tags=["Data"], prefix="/data")
 app.include_router(PlanRouter, tags=["Plan"], prefix="/plan")
 app.include_router(UserAccountRolRouter, tags=[
                    "User Account Rol"], prefix="/useraccountrol")
