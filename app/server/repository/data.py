@@ -9,7 +9,7 @@ from app.server.models.account import Account
 debug = bool(config("app.debug"))
 
 def get_collection(account: Account, entity_name: str):
-    host = "mongodb://" + account["host"] + ":27017/"
+    host = "mongodb://" + account["database_host"] + ":27017/"
     client = MongoClient(host)
     database = client[account["database_name"]]
     return database[entity_name]
@@ -60,8 +60,14 @@ async def retrieve_data(request: Request, account: Account, entity_name: str, pa
 
 # Add a new data into to the database
 async def add_data(account: Account, entity_name: str, data: dict) -> dict:
+    print("estoy en add repository")
+    print(account)
+    print(entity_name)
+    print(data)
     data = get_collection(account, entity_name).insert_one(data)
+    print("inserte")
     print(data.inserted_id)
+    print("obtengo el registro insertado")
     new_data = get_collection(account, entity_name).find_one({"_id": data.inserted_id})
     return new_data
 

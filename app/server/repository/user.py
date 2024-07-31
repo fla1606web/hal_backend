@@ -11,13 +11,19 @@ user_collection = database.get_collection("users")
 def user_helper(user) -> dict:
     return {
         "id": str(user["_id"]),
-        "name": user["name"],
         "id_account": user["id_account"],
+        "id_user_account_rol": "",
+        "user": user["user"],
+        "password": user["password"],
+        "mail": user["mail"],
+        "name": user["name"],
+        "last_name": user["last_name"],
+        "telephone": user["telephone"],
+        "lang": user["lang"],
+        "time_zone": user["time_zone"],
+        "token_firebase": user["token_firebase"],
         "active": user["active"],
-        "username": user["username"],
-        "password": user["password"],                
     }
-
 
 # crud operations
 # Retrieve all users present in the database

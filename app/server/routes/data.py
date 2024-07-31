@@ -28,7 +28,7 @@ debug = bool(config("app.debug"))
 @router.post("/{account_id}/{entity_name}/", response_description="Data added into the database")
 async def add(account_id : str, entity_name : str, data: Json[Any] = Body(...)):
     account = await retrieve_account_object(account_id)
-    if account:    
+    if account: 
         data = jsonable_encoder(data)
         new_data = await add_data(account, entity_name, data)
         return ResponseModel(new_data, "Entity added successfully.")

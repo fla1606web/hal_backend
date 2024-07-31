@@ -127,6 +127,8 @@ app.add_middleware(
 @app.middleware("http")
 async def add_process_time_header(request: Request, call_next):
 
+    app.logger.info("Request %s %s q=%s" % (request.method, request.url.path, request.query_params))
+    
     if ("docs" in request.url.path or "openapi" in request.url.path or "login" in request.url.path or "account" in request.url.path or "user" in request.url.path):
         return await call_next(request)
     

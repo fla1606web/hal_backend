@@ -2,13 +2,19 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
+
 class EntityField(BaseModel):
     id_entity: str = Field(...)
     name: str = Field(...)
-    column_name: str = Field(...)
-    id_entity_type: str = Field(...)
-    color: str = Field(...)
-    icon: str = Field(...)
+    field_name: str = Field(...)
+    id_entity_field_type: str = Field(...)
+    id_entity_relation: str = Field(...)
+    required: str = Field(...)
+    order: str = Field(...)
+    minimun: str = Field(...)
+    maximun: str = Field(...)
+    options: str = Field(...)
+    roles: str = Field(...)
     active: bool = Field(...)
 
     class Config:
@@ -16,35 +22,52 @@ class EntityField(BaseModel):
             "example": {
                 "id_entity": "6667907c95f0cd279feb07a2",
                 "name": "Nombre",
-                "column_name": "nombre",
-                "id_entity_type": "6667907c95f0cd279feb07a2",
-                "color": "#f3f3f3",
-                "icon": "fa-people",
+                "field_name": "nombre",
+                "id_entity_field_type": "6667907c95f0cd279feb07a2",
+                "id_entity_relation": "id_entity_relation",
+                "required": "required",
+                "order": "order",
+                "minimun": "minimun",
+                "maximun": "maximun",
+                "options": "options",
+                "roles": "roles",
                 "active": True
             }
         }
 
+
 class UpdateEntityFieldModel(BaseModel):
     id_entity: Optional[str]
     name: Optional[str]
-    column_name: Optional[str]
-    id_entity_type: Optional[str]
-    color: Optional[str]
-    icon: Optional[str]
-    active: Optional[str]
+    field_name: Optional[str]
+    id_entity_field_type: Optional[str]
+    id_entity_relation: Optional[str]
+    required: Optional[str]
+    order: Optional[str]
+    minimun: Optional[str]
+    maximun: Optional[str]
+    options: Optional[str]
+    roles: Optional[str]
+    active: Optional[bool]
 
     class Config:
         json_schema_extra = {
             "example": {
                 "id_entity": "6667907c95f0cd279feb07a2",
                 "name": "Nombre",
-                "column_name": "nombre",
-                "id_entity_type": "6667907c95f0cd279feb07a2",
-                "color": "#f3f3f3",
-                "icon": "fa-people",
+                "field_name": "nombre",
+                "id_entity_field_type": "6667907c95f0cd279feb07a2",
+                "id_entity_relation": "id_entity_relation",
+                "required": "required",
+                "order": "order",
+                "minimun": "minimun",
+                "maximun": "maximun",
+                "options": "options",
+                "roles": "roles",
                 "active": True
             }
         }
+
 
 def ResponseModel(data, message):
     return {
@@ -52,6 +75,7 @@ def ResponseModel(data, message):
         "code": 200,
         "message": message,
     }
+
 
 def ErrorResponseModel(error, code, message):
     return {"error": error, "code": code, "message": message}

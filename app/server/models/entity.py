@@ -1,46 +1,53 @@
-from typing import Optional, List
+from typing import Optional
 
-from pydantic import BaseModel, Field, Json
+from pydantic import BaseModel, Field
+
 
 class Entity(BaseModel):
-    name: str = Field(...)
     id_account: str = Field(...)
-    collection_name: str = Field(...)
+    name: str = Field(...)
+    table_name: str = Field(...)
     color: str = Field(...)
     icon: str = Field(...)
+    roles: str = Field(...)
     active: bool = Field(...)
 
     class Config:
         json_schema_extra = {
             "example": {
-                "name": "Clients",
                 "id_account": "6667907c95f0cd279feb07a2",
-                "collection_name": "client",
+                "name": "Clients",
+                "table_name": "client",
                 "color": "#f3f3f3",
                 "icon": "fa-people",
+                "roles": "rol",
                 "active": True
             }
         }
 
+
 class UpdateEntityModel(BaseModel):
-    name: Optional[str]
     id_account: Optional[str]
-    collection_name: Optional[str]
+    name: Optional[str]
+    table_name: Optional[str]
     color: Optional[str]
     icon: Optional[str]
+    roles: Optional[str]
     active: Optional[str]
 
     class Config:
         json_schema_extra = {
             "example": {
-                "name": "Clients",
                 "id_account": "6667907c95f0cd279feb07a2",
-                "collection_name": "client",
+                "name": "Clients",
+                "table_name": "client",
                 "color": "#f3f3f3",
                 "icon": "fa-people",
+                "roles": "rol",
                 "active": True
             }
         }
+
 
 def ResponseModel(data, message):
     return {
@@ -48,6 +55,7 @@ def ResponseModel(data, message):
         "code": 200,
         "message": message,
     }
+
 
 def ErrorResponseModel(error, code, message):
     return {"error": error, "code": code, "message": message}

@@ -19,7 +19,7 @@ router = APIRouter()
 
 @router.post("/", response_description="User data added into the database")
 async def add_user_data(user: User = Body(...)):
-    print(user)
+    print("entro")
     user = jsonable_encoder(user)
     new_user = await add_user(user)
     return ResponseModel(new_user, "User added successfully.")

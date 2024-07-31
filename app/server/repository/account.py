@@ -1,11 +1,6 @@
-import json
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from decouple import config
-
-from app.server.models.user import (User, UserToDict)
-
-from app.server.repository.user import add_user
 
 client = MongoClient(config("mongo.host"))
 database = client[config("mongo.database")]
@@ -17,7 +12,8 @@ def account_helper(account) -> dict:
     return {
         "id": str(account["_id"]),
         "name": account["name"],
-        "host": account["host"],
+        "id_plan": account["id_plan"],
+        "database_host": account["database_host"],
         "database_name": account["database_name"],
         "active": account["active"],
     }
@@ -35,14 +31,6 @@ async def retrieve_accounts():
 async def add_account(account_data: dict) -> dict:
     account = account_collection.insert_one(account_data)
     new_account = account_collection.find_one({"_id": account.inserted_id})
-
-    user = User
-    user.username = "admin"
-    user.password = "123456"
-    user.active = True
-    user.id_account = str(new_account["_id"])
-    #print(UserToDict(user))
-
     return account_helper(new_account)
 
 # Retrieve a account with a matching ID

@@ -7,15 +7,15 @@ database = client[config("mongo.database")]
 
 entity_collection = database.get_collection("entities")
 
-# helpers
 def entity_helper(entity) -> dict:
     return {
         "id": str(entity["_id"]),
-        "name": entity["name"],
         "id_account": entity["id_account"],
-        "collection_name": entity["collection_name"],
+        "name": entity["name"],
+        "table_name": entity["table_name"],
         "color": entity["color"],
         "icon": entity["icon"],
+        "roles": entity["roles"],
         "active": entity["active"],
     }
 

@@ -15,7 +15,8 @@ secret = "fEEFF!-gas$3fsd**1212$4dEE"
 tz = pytz.timezone("America/Lima")
 
 async def exits_user(login: Login):
-        user = user_collection.find_one({"username": login.username, "password": login.password})
+        print(login)
+        user = user_collection.find_one({"user": login.username, "password": login.password})
         return user
 
 def generate_token(id_account: str, id_user: str, is_administrator: bool, login: Login):
