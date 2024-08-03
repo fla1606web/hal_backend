@@ -17,6 +17,7 @@ def entity_field_helper(entity_field) -> dict:
         "field_name": entity_field["field_name"],
         "id_entity_field_type": entity_field["id_entity_field_type"],
         "id_entity_relation": entity_field["id_entity_relation"],
+        "entity_relation_field_name": entity_field["entity_relation_field_name"],
         "required": entity_field["required"],
         "order": entity_field["order"],
         "minimun": entity_field["minimun"],

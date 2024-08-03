@@ -9,6 +9,7 @@ class EntityField(BaseModel):
     field_name: str = Field(...)
     id_entity_field_type: str = Field(...)
     id_entity_relation: str = Field(...)
+    entity_relation_field_name: str = Field(...)
     required: str = Field(...)
     order: str = Field(...)
     minimun: str = Field(...)
@@ -25,6 +26,7 @@ class EntityField(BaseModel):
                 "field_name": "nombre",
                 "id_entity_field_type": "6667907c95f0cd279feb07a2",
                 "id_entity_relation": "id_entity_relation",
+                "entity_relation_field_name": "entity_relation_field_name",
                 "required": "required",
                 "order": "order",
                 "minimun": "minimun",
@@ -42,6 +44,7 @@ class UpdateEntityFieldModel(BaseModel):
     field_name: Optional[str]
     id_entity_field_type: Optional[str]
     id_entity_relation: Optional[str]
+    entity_relation_field_name: Optional[str]
     required: Optional[str]
     order: Optional[str]
     minimun: Optional[str]
@@ -58,6 +61,7 @@ class UpdateEntityFieldModel(BaseModel):
                 "field_name": "nombre",
                 "id_entity_field_type": "6667907c95f0cd279feb07a2",
                 "id_entity_relation": "id_entity_relation",
+                "entity_relation_field_name": "entity_relation_field_name",
                 "required": "required",
                 "order": "order",
                 "minimun": "minimun",
